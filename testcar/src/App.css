@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+.inter-font {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+.dark-2{
+  color: #444444;
+}
+.dark-3{
+  color: #737373;
+}
+.primary-color{
+  background-color: #FF3811;
+}
+.primary-font{
+  color: #FF3811;
+}

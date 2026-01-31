@@ -1,0 +1,9 @@
+.trapezoid {
+  height: 0;
+  width: 250px; /* Top edge width */
+  border-bottom: 50px solid #FF3811; /* Height of trapezoid and color */
+  border-left: 50px solid transparent; /* Slope angle 1 */
+  border-right: 50px solid transparent; /* Slope angle 2 */
+  box-sizing: content-box;
+  
+}
