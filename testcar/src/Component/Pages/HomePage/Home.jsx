@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import Service from './Service';
+import Header from '../../Shared component/Header';
+import Footer from '../../Shared component/Footer';
 
 const Home = () => {
     const [Services, setServices]= useState([]);
@@ -13,6 +15,7 @@ const Home = () => {
     },[])
     return (
         <div>
+            <Header></Header>
             <div className='mt-20'>
                 <div className="carousel w-full">
                     <div id="slide1" className="carousel-item relative w-full">
@@ -181,6 +184,7 @@ const Home = () => {
                 </div>
             </div>
         </div>
+
     );
 };
 

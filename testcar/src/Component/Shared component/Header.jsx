@@ -40,7 +40,7 @@ const Header = () => {
                 <button className="btn btn-ghost btn-circle text-2xl ">
                     <IoIosSearch></IoIosSearch>
                 </button>
-                <button className="btn btn-outline btn-error ml-10">Appointment</button>
+                <button className="btn  btn-error ml-10 btn-outline">Appointment</button>
             </div>
         </div>
     );

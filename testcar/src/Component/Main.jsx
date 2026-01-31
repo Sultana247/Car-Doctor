@@ -7,7 +7,7 @@ const Main = () => {
     return (
         <div>
             <div className='max-w-7xl mx-auto inter-font'>
-                <Header></Header>
+                
                 <Outlet></Outlet>
            
             </div>

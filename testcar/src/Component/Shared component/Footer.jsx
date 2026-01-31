@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <div>
-            <footer className="footer sm:footer-horizontal bg-black text-white p-10">
+            <footer className="footer sm:footer-horizontal bg-black text-white p-10 mt-15">
                 <aside>
                    <img src="https://i.ibb.co.com/5g8jZwFF/Group-2.png" alt="" className=''/>
                     <p>
