@@ -5,7 +5,7 @@ import {Link} from "react-router"
 
 const Service = ({service}) => {
     console.log(service);
-    const { service_id, title, img, price}= service;
+    const {  title, img, price, _id}= service;
     return (
         <div>
             <div className="card bg-base-100 w-96 shadow-sm p-6.25">
@@ -20,7 +20,7 @@ const Service = ({service}) => {
                 
                 <div className="card-actions flex justify-between primary-font font-semibold text-xl items-center mt-5">
                 <p className='flex items-center  '>Price: <BiDollar/>{price}</p>
-                <Link to={`/service-details/${service_id}`}><FaArrowRight/></Link>
+                <Link to={`/service-details/${_id}`}><FaArrowRight/></Link>
                 </div>
             </div>
             </div>

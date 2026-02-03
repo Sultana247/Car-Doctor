@@ -3,16 +3,18 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import Service from './Service';
 import Header from '../../Shared component/Header';
 import Footer from '../../Shared component/Footer';
-
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 const Home = () => {
+    const axiosSecure = useAxiosSecure();
     const [Services, setServices]= useState([]);
+    const url ='/service';
     useEffect(()=>{
-        fetch('/services.json')
-        .then(res=>res.json())
-        .then(data=>{
-            setServices(data)
+       axiosSecure.get('/service')
+        .then(res=>{
+            console.log(res)
+            setServices(res.data)
         })
-    },[])
+    },[url,axiosSecure])
     return (
         <div>
             <Header></Header>
@@ -180,7 +182,7 @@ const Home = () => {
                 </p>
                 
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-                    {Services.map(service=><Service service={service} key={service._id}></Service>)}
+                    {Services?.map(service=><Service service={service} key={service._id}></Service>)}
                 </div>
             </div>
         </div>

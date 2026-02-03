@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router';
 // https://i.ibb.co.com/RTPWKkXK/logo.jpg
 import { BiShoppingBag } from "react-icons/bi";
 import { IoIosSearch } from "react-icons/io";
+import AuthContext from '../Provider/AuthContext';
 
 const Header = () => {
+    const {user, logout}=useContext(AuthContext);
+    const handleLogOut=()=>{
+        logout()
+        .then(data=>{
+            alert('Logged Out', data)
+        })
+        .catch(error=>{
+            console.log(error.message)
+        })
+    }
     const navitems = 
     <>
     <NavLink to='/'>Home</NavLink>
     <NavLink to='/about'>About</NavLink>
     <NavLink to='/services'>Services</NavLink>
-    <NavLink to='/blog'>Blog</NavLink>
+    <NavLink to='/cart'>Cart</NavLink>
     <NavLink to='/contact'>Contact</NavLink>
+    {user? <button onClick={handleLogOut}>Logout</button>
+    :
+    <NavLink to='/login'>Login</NavLink>}
     </>
     return (
         <div className="navbar bg-base-100 ">

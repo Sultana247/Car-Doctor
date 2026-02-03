@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import HeaderSecond from '../../Shared component/HeaderSecond';
 import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from 'react-router';
+import { Link} from 'react-router';
+import AuthContext from '../../Provider/AuthContext';
 
 const SignUp = () => {
+    const {signUp, logout}=useContext(AuthContext);
+    const handleSignUp =(e)=>{
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(name, email, password);
+
+        signUp(email, password)
+        .then(data=>{
+            console.log(data.user);
+            e.target.reset();
+            logout()
+        })
+        .catch(error=>{
+            console.log(error.message)
+        })
+    }
     return (
         <div>
             <HeaderSecond></HeaderSecond>
@@ -14,13 +34,13 @@ const SignUp = () => {
                     <img src="https://i.ibb.co.com/20DQkVWS/Frame.png" alt="" className='' />
                 </div>
                 <div className='w-1/2 p-20 shadow-sm border-base-300 rounded-box border '>
-                    <form >
+                    <form onSubmit={handleSignUp}>
                         <fieldset className="fieldset  ">
                         
                         <h2 className='dark-2 font-semibold text-[40px] text-center'>Sign Up</h2>
 
                         <label className="label mt-5 font-semibold text-lg mb-3 dark-2">Name</label>
-                        <input type="email" name='name' className="input w-full" placeholder="Your Name" />
+                        <input type="text" name='name' className="input w-full" placeholder="Your Name" />
 
                         <label className="label mt-5 font-semibold text-lg mb-3 dark-2">Email</label>
                         <input type="email" name='email' className="input w-full" placeholder="Your Email" />
@@ -28,7 +48,7 @@ const SignUp = () => {
                         <label className="label mt-5 font-semibold text-lg mb-3 dark-2">Confirm Password</label>
                         <input type="password" name='password' className="input w-full" placeholder="Your Password" />
 
-                        <button className="btn py-4 text-white font-semibold text-xl mt-4 primary-color">Sign Up</button>
+                        <button type='submit' className="btn py-4 text-white font-semibold text-xl mt-4 primary-color">Sign Up</button>
                     </fieldset>
                     </form>
                     <p className='mt-7 text-center'>Or Sign Up With </p>

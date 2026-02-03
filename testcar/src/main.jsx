@@ -6,10 +6,13 @@ import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import Main from './Component/Main.jsx';
 import Home from './Component/Pages/HomePage/Home.jsx';
-import ServiceDetails from './Component/Pages/ServiceDetails.jsx/ServiceDetails.jsx';
 import AuthProvider from './Component/Provider/AuthProvider.jsx';
 import Login from './Component/Pages/Login/Login.jsx';
 import SignUp from './Component/Pages/SignUp/SignUp.jsx';
+import Checkout from './Component/Pages/checkout/Checkout.jsx';
+import ServiceDetails from './Component/Pages/ServiceDetails/ServiceDetails.jsx';
+import Cart from './Component/Pages/checkout/Cart.jsx';
+import Private from './Component/PrivateRoute/Private.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,8 +24,9 @@ const router = createBrowserRouter([
         element: <Home></Home>
       },
       {
-        path:'/service-details/:service_id',
+        path:'/service-details/:id',
         element: <ServiceDetails></ServiceDetails>,
+        loader: ({params})=>fetch(`http://localhost:5000/service/${params.id}`)
         
       },
       {
@@ -32,6 +36,15 @@ const router = createBrowserRouter([
       {
         path: '/signup',
         element: <SignUp></SignUp>
+      },
+      {
+        path: '/checkout/:id',
+        element: <Checkout></Checkout>,
+        loader: ({params})=>fetch(`http://localhost:5000/service/${params.id}`)
+      },
+      {
+        path: '/cart',
+        element: <Private><Cart></Cart></Private>
       }
     ]
   },
